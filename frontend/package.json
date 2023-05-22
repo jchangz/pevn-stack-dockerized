@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "concurrently": "^8.0.1",
+    "nodemon": "^2.0.22",
     "typescript": "^5.0.2",
     "vite": "^4.3.2"
   },
