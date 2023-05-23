@@ -10,3 +10,7 @@ app.get("/", (req: Request, res: Response): void => {
 app.listen(port, (): void => {
   console.log(`Example app listening on port ${port}`)
 })
+
+app.get("/test", (_req, res) => {
+  res.json({ message: "⚡ Backend Connected ⚡" })
+})
