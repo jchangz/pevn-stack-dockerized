@@ -1,0 +1,20 @@
+version: "3.9"
+name: pevn-app
+services:
+  backend:
+    restart: always
+    build: ./backend
+    container_name: backend
+    volumes:
+      - ./backend:/home/node/app/backend
+  frontend:
+    restart: always
+    build: ./frontend
+    container_name: frontend
+    volumes:
+      - ./frontend:/home/node/app/frontend
+    ports:
+      - "3000:3000"
+      - "5173:5173"
+    environment:
+      - REST_API_URL=http://backend:3001
