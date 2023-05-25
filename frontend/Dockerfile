@@ -2,8 +2,6 @@ FROM node:14.15.0
 
 WORKDIR /home/node/app/frontend
 
-COPY . .
+COPY package.json package-lock*.json ./
 
-RUN npm install
-
-CMD npm run dev
+RUN npm install && npm cache clean --force

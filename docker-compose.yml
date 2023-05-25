@@ -7,14 +7,18 @@ services:
     container_name: backend
     volumes:
       - ./backend:/home/node/app/backend
+      - /home/node/app/backend/node_modules
+    command: npm run start:dev
   frontend:
     restart: always
     build: ./frontend
     container_name: frontend
     volumes:
       - ./frontend:/home/node/app/frontend
+      - /home/node/app/frontend/node_modules
     ports:
       - "3000:3000"
       - "5173:5173"
     environment:
       - REST_API_URL=http://backend:3001
+    command: npm run dev

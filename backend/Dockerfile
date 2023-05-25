@@ -2,10 +2,8 @@ FROM node:14.15.0-alpine
 
 WORKDIR /home/node/app/backend
 
-COPY . .
+COPY package.json package-lock*.json ./
 
-RUN npm install
+RUN npm install && npm cache clean --force
 
 EXPOSE 3001
-
-CMD npm run start:dev
