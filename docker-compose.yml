@@ -6,19 +6,26 @@ services:
     build: ./backend
     container_name: backend
     volumes:
-      - ./backend:/home/node/app/backend
-      - /home/node/app/backend/node_modules
+      - ./backend:/opt/app/backend
+      - ./backend/package.json:/opt/app/package.json
+      - ./backend/package-lock.json:/opt/app/package-lock.json
+      - notused:/opt/app/backend/node_modules
     command: npm run start:dev
   frontend:
     restart: always
     build: ./frontend
     container_name: frontend
     volumes:
-      - ./frontend:/home/node/app/frontend
-      - /home/node/app/frontend/node_modules
+      - ./frontend:/opt/app/frontend
+      - ./frontend/package.json:/opt/app/package.json
+      - ./frontend/package-lock.json:/opt/app/package-lock.json
+      - notused:/opt/app/frontend/node_modules
     ports:
       - "3000:3000"
       - "5173:5173"
     environment:
       - REST_API_URL=http://backend:3001
     command: npm run dev
+
+volumes:
+  notused:
