@@ -11,7 +11,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_DB=prod-db
     volumes:
-      - ./postgres-data:/var/lib/postgesql/data
+      - ./postgres-data:/var/lib/postgresql/data
       - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
   backend:
     restart: always
