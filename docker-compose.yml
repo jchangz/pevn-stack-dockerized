@@ -1,15 +1,35 @@
 version: "3.9"
 name: pevn-app
 services:
+  database:
+    image: postgres:12-alpine
+    container_name: database
+    expose:
+      - "5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=prod-db
+    volumes:
+      - ./postgres-data:/var/lib/postgesql/data
   backend:
     restart: always
     build: ./backend
     container_name: backend
+    links:
+      - database
+    depends_on:
+      - database
     volumes:
       - ./backend:/opt/app/backend
       - ./backend/package.json:/opt/app/package.json
       - ./backend/package-lock.json:/opt/app/package-lock.json
       - notused:/opt/app/backend/node_modules
+    environment:
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=prod-db
+      - DB_HOST=database
     command: npm run start:dev
   frontend:
     restart: always
