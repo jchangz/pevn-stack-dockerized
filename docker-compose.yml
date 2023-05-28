@@ -12,6 +12,7 @@ services:
       - POSTGRES_DB=prod-db
     volumes:
       - ./postgres-data:/var/lib/postgesql/data
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
   backend:
     restart: always
     build: ./backend
