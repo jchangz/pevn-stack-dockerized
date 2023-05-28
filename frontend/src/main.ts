@@ -23,10 +23,10 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
 
 fetch(`/api/test`)
   .then((r) => r.json())
-  .then(({ message }) => {
-    const child = document.createElement("p")
-    child.innerHTML = message
-    document.querySelector<HTMLDivElement>("#app")!.appendChild(child)
+  .then((res) => {
+    const container = document.createElement("div")
+    container.innerHTML = JSON.stringify(res)
+    document.querySelector<HTMLDivElement>("#app")!.appendChild(container)
   })
 
 setupCounter(document.querySelector<HTMLButtonElement>("#counter")!)
