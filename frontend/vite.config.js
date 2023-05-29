@@ -8,6 +8,7 @@ export default defineConfig({
   },
   cacheDir: "cacheDir/node_modules/.vite",
   build: {
+    manifest: true,
     rollupOptions: {
       input: {
         main: "./src/main.ts",
