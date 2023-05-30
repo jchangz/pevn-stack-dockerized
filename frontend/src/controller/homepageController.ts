@@ -1,19 +1,7 @@
-import express from "express"
 import fs from "fs/promises"
 import path from "path"
 
-const router = express.Router()
-
 const environment = process.env.NODE_ENV
-
-router.get("/*", async (_req, res) => {
-  const data = {
-    environment,
-    manifest: await parseManifest(),
-  }
-
-  res.render("index.html.ejs", data)
-})
 
 const parseManifest = async () => {
   if (environment !== "PROD") return {}
@@ -24,4 +12,13 @@ const parseManifest = async () => {
   return JSON.parse(manifestFile)
 }
 
-export default router
+const data = {
+  environment,
+  manifest: await parseManifest(),
+}
+
+const homeView = async (req, res) => {
+  res.render("index.ejs", data)
+}
+
+export { homeView }

@@ -1,6 +1,6 @@
 import express from "express"
 
-const router = express.Router()
+const assetsRouter = express.Router()
 
 const supportedAssets = ["svg", "png", "jpg", "png", "jpeg", "mp4", "ogv"]
 
@@ -10,8 +10,8 @@ const assetExtensionRegex = () => {
   return new RegExp(`/.+\.(${formattedExtensionList})$`)
 }
 
-router.get(assetExtensionRegex(), (req, res) => {
+assetsRouter.get(assetExtensionRegex(), (req, res) => {
   res.redirect(303, `http://localhost:5173/src${req.path}`)
 })
 
-export default router
+export default assetsRouter
