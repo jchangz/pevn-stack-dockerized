@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev:frontend": "vite --host",
-    "dev:server": "nodemon -L server/index.js",
+    "dev:server": "nodemon -L src/app.ts",
     "dev": "concurrently 'npm:dev:frontend' 'npm:dev:server'",
     "build": "tsc && vite build",
     "preview": "vite preview"
