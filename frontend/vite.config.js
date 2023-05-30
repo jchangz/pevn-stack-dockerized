@@ -4,6 +4,7 @@ export default defineConfig({
   server: {
     watch: {
       usePolling: true,
+      ignored: ['**/src/controller/**', '**/src/routes/**', './src/app.ts'],
     },
   },
   cacheDir: "cacheDir/node_modules/.vite",
