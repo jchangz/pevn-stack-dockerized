@@ -15,6 +15,7 @@ const parseManifest = async () => {
 const data = {
   environment,
   manifest: await parseManifest(),
+  script: "src/main.ts",
 }
 
 const homeView = async (req, res) => {
