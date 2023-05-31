@@ -1,6 +1,6 @@
 import express from "express"
 import path from "path"
-import homeRouter from "./routes/homepage.js"
+import pageRouter from "./routes/pageRoutes.ts"
 import assetsRouter from "./routes/assets.ts"
 import { createProxyMiddleware } from "http-proxy-middleware"
 import { dirname } from "path"
@@ -34,7 +34,7 @@ if (process.env.NODE_ENV === "PROD") {
   app.use("/src", assetsRouter)
 }
 
-app.use(homeRouter)
+app.use(pageRouter)
 
 app.listen(port, () => {
   console.log("Server listening on port", port)

@@ -1,8 +1,8 @@
 import express from "express"
 import { homeView } from "../controller/homepageController.ts"
 
-const homeRouter = express.Router()
+const pageRouter = express.Router()
 
-homeRouter.get("/", homeView)
+pageRouter.get("/", homeView)
 
-export default homeRouter
+export default pageRouter
