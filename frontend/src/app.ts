@@ -2,6 +2,7 @@ import express from "express"
 import path from "path"
 import pageRouter from "./routes/pageRoutes.ts"
 import assetsRouter from "./routes/assets.ts"
+import parseManifest from "./utils/manifest.ts"
 import { createProxyMiddleware } from "http-proxy-middleware"
 import { dirname } from "path"
 import { fileURLToPath } from "url"
@@ -35,6 +36,17 @@ if (process.env.NODE_ENV === "PROD") {
 }
 
 app.use(pageRouter)
+
+app.use(async (req, res, next) => {
+  const environment = process.env.NODE_ENV
+  res.status(404).render("index.ejs", {
+    environment,
+    manifest: await parseManifest(),
+    script: "src/components/404.ts",
+    title: "Page Not Found",
+  })
+  next()
+})
 
 app.listen(port, () => {
   console.log("Server listening on port", port)
