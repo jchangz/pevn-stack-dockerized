@@ -12,7 +12,7 @@ export default defineConfig({
     manifest: true,
     rollupOptions: {
       input: {
-        main: "./src/main.ts",
+        main: "./src/components/main.ts",
         404: "./src/components/404.ts",
       },
     },

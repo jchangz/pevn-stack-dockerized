@@ -5,7 +5,7 @@
   </head>
   <body>
     <div id="app"></div>
-    <% if (environment === 'PROD') { %>
+    <% if (environment === 'production') { %>
       <% if (manifest[script]) { %>
         <script type="module" src="<%= manifest[script].file %>"></script>
       <% } %>

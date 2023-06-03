@@ -7,6 +7,7 @@
     "dev:frontend": "vite --host",
     "dev:server": "nodemon -L src/app.ts",
     "dev": "concurrently 'npm:dev:frontend' 'npm:dev:server'",
+    "start": "NODE_ENV=production ts-node --esm src/app.ts",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },

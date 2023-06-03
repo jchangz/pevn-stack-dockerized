@@ -28,7 +28,7 @@ app.use(
   })
 )
 
-if (process.env.NODE_ENV === "PROD") {
+if (process.env.NODE_ENV === "production") {
   app.use("/", express.static(distPath))
 } else {
   app.use("/", express.static(publicPath))
