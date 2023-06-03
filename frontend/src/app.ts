@@ -37,7 +37,7 @@ if (process.env.NODE_ENV === "PROD") {
 
 app.use(pageRouter)
 
-app.use(async (req, res, next) => {
+app.use(async (_req, res, next) => {
   const environment = process.env.NODE_ENV
   res.status(404).render("index.ejs", {
     environment,
